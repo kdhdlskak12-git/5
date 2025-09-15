@@ -6,54 +6,43 @@
   <title>기계식주차장 과태료 진단 셀프 테스트</title>
   <style>
     :root{
-      --bg:#29c3cd;
-      --bg-dark:#1fb4be;
-      --ink:#000000;
-      --card:#a7f3d0;
-      --btn:#0e7c86;
-      --btn-hover:#0c6a72;
-      --ok:#17a34a;
-      --no:#ef4444;
+      --bg:#29c3cd; --bg-dark:#1fb4be; --ink:#000; --card:#a7f3d0; --btn:#0e7c86; --btn-hover:#0c6a72;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0; font-family: "Pretendard", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
-      background:var(--bg); color:var(--ink); display:flex; align-items:center; justify-content:center; min-height:100vh;
-    }
-    .app{width:min(960px, 100%); padding:24px}
-    .hero{background:linear-gradient(180deg, var(--bg) 0%, var(--bg-dark) 100%); border-radius:24px; padding:28px; color:var(--ink); box-shadow:0 10px 20px rgba(0,0,0,.08); text-align:center}
-    .hero h1{margin:12px 0 8px; font-size:32px; color:var(--ink)}
-    .hero p{margin:6px 0 0; opacity:.95; color:var(--ink)}
-    .logo{max-width:360px; margin:0 auto 12px; display:block}
-    .stat{display:inline-block; margin-top:10px; padding:6px 14px; border-radius:999px; background:rgba(255,255,255,.3); font-weight:700;}
-    .card{background:var(--card); border-radius:20px; padding:20px; margin-top:18px; box-shadow:0 10px 16px rgba(0,0,0,.06)}
-    .btn{appearance:none; border:none; background:var(--btn); color:#fff; font-weight:800; padding:12px 18px; border-radius:18px; cursor:pointer; font-size:16px; box-shadow:0 8px 14px rgba(0,0,0,.15)}
+    body{margin:0;font-family:"Pretendard",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;background:var(--bg);color:var(--ink);display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .app{width:min(960px,100%);padding:24px}
+    .hero{background:linear-gradient(180deg,var(--bg),var(--bg-dark));border-radius:24px;padding:28px;color:var(--ink);box-shadow:0 10px 20px rgba(0,0,0,.08);text-align:center}
+    .hero h1{margin:12px 0 8px;font-size:32px}
+    .hero p{margin:6px 0 0;opacity:.95}
+    .logo{max-width:360px;margin:0 auto 12px;display:block}
+    .stat{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.3);font-weight:700}
+
+    .card{background:var(--card);border-radius:20px;padding:20px;margin-top:18px;box-shadow:0 10px 16px rgba(0,0,0,.06)}
+    .btn{appearance:none;border:none;background:var(--btn);color:#fff;font-weight:800;padding:12px 18px;border-radius:18px;cursor:pointer;font-size:16px;box-shadow:0 8px 14px rgba(0,0,0,.15)}
     .btn:hover{background:var(--btn-hover)}
-    .opt{display:block; width:100%; text-align:center; padding:14px; margin:10px 0; border-radius:16px; background:#b6eef2; color:var(--ink); font-weight:800; cursor:pointer; font-size:20px}
+    .opt{display:block;width:100%;text-align:center;padding:14px;margin:10px 0;border-radius:16px;background:#b6eef2;color:var(--ink);font-weight:800;cursor:pointer;font-size:20px}
 
     .muted{opacity:.85}
-    .result-head{ text-align:center }
+    .result-head{text-align:center}
     .result-head h2{margin:0 0 8px}
-    .section-title{ font-weight:800; margin:12px 0 10px; }
-    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .cell{ background:#b6eef2; border-radius:16px; padding:14px 16px; display:flex; justify-content:space-between; align-items:center; min-height:56px; cursor:pointer; flex-direction:column; text-align:left }
-    .pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; font-weight:800; margin-top:6px }
-    .pill.ok{ background:#dcfce7; color:#14532d }
-    .pill.no{ background:#fee2e2; color:#7f1d1d }
-    .pill .icon{font-weight:900}
+    .section-title{font-weight:800;margin:12px 0 10px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .cell{background:#b6eef2;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:64px;cursor:pointer;text-align:center}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font-weight:800;margin-top:6px}
+    .pill.ok{background:#dcfce7;color:#14532d}
+    .pill.no{background:#fee2e2;color:#7f1d1d}
 
-    .detail-card{display:none; margin-top:18px; padding:20px; background:#fff; border-radius:16px; text-align:left; white-space:pre-line;}
+    .detail-card{margin-top:16px;background:#fff;border-radius:16px;padding:16px;box-shadow:0 6px 12px rgba(0,0,0,.1)}
+    .detail-card h3{margin:0 0 8px}
 
-    .footer{margin-top:16px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center}
-
+    .footer{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
     .hide{display:none}
-    .center{text-align:center}
-    .back-btn{margin-top:12px; display:block; width:100%;}
+    .back-btn{margin-top:12px;display:block;width:100%}
   </style>
 </head>
 <body>
   <div class="app">
-    <!-- 시작 화면 -->
+    <!-- 인트로 -->
     <section id="screen-start" class="hero">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Korea_Transportation_Safety_Authority_Logo.png/320px-Korea_Transportation_Safety_Authority_Logo.png" alt="TS 한국교통안전공단" class="logo" />
       <h1>기계식주차장 과태료 진단 셀프 테스트</h1>
@@ -62,26 +51,23 @@
       <button id="btnStart" class="btn">테스트 시작하기</button>
     </section>
 
-    <!-- 문제 화면 -->
+    <!-- 퀴즈 -->
     <section id="screen-quiz" class="card hide">
       <h2 id="qTitle"></h2>
       <div id="optWrap"></div>
       <button id="btnBack" class="btn back-btn hide">뒤로가기</button>
     </section>
 
-    <!-- 결과 화면 -->
+    <!-- 결과 -->
     <section id="screen-result" class="card hide">
       <div class="result-head">
         <h2>내 안전이해도</h2>
-        <div class="muted">
-          정답 <b id="score"></b> / <span id="totalQ"></span> · 예상 과태료 <b id="penaltyWon"></b>원
-        </div>
+        <div class="muted">정답 <b id="score"></b> / <span id="totalQ"></span> · 예상 과태료 <b id="penaltyWon"></b>원</div>
         <div class="muted" id="penaltyHundred"></div>
       </div>
       <div class="section-title">항목별 이행 여부</div>
-      <div id="grid" class="grid2"></div>
-      <div id="detailView" class="detail-card"></div>
-
+      <div id="grid"></div>
+      <div id="detailBox" class="detail-card hide"></div>
       <div class="footer">
         <button id="btnRetry" class="btn">다시하기</button>
         <button id="btnShare" class="btn">공유하기</button>
@@ -90,17 +76,26 @@
   </div>
 
   <script>
+    // ----- 데이터: 문제 2개 -----
     const QUIZ = [
       {
         title: '20대 이상의 기계식주차장치를 운영하는 기계식주차장관리자 등은 배상보험에 가입하지 않아도 된다?',
         answer: 'X',
         fine: 5000000,
         law: `제19조의16제1항 또는 제2항을 위반하여 배상보험에 가입하지 아니한 자\n제19조의16(보험 가입) \n① 제19조의14제1항에 따라 보수업의 등록을 한 자(이하 “보수업자”라 한다)는 그 업무를 수행하면서 고의 또는 과실로 타인에게 손해를 입힐 경우 그 손해에 대한 배상을 보장하기 위하여 보험에 가입하여야 한다.`
+      },
+      {
+        title: '사용검사 또는 정기검사의 유효기간이 지나도 검사를 받지 않아도 된다?',
+        answer: 'X',
+        fine: 1000000,
+        law: `제19조의9제3항에 따른 사용검사 또는 정기검사의 유효기간이 지난 후 검사를 받지 아니한 자(제29조제2항제7호에 따라 벌칙을 부과받은 경우는 제외한다) \n제19조의9(기계식주차장의 사용검사 등)\n③ 사용검사, 정기검사, 수시검사(이하 “안전검사”라 한다)의 유효기간, 연기 절차, 검사시기 등 검사에 필요한 사항은 대통령령으로 정한다. <개정 2023. 8. 16.>`
       }
     ];
 
-    const CATEGORIES = ['보상책임 여부','','','','','','',''];
+    // 결과표 라벨(8칸)
+    const CATEGORIES = ['보상책임 여부','검사 이행 여부','','','','','',''];
 
+    // ----- 상태 & 셀렉터 -----
     const state = { step:0, answers:[] };
     const $ = s=>document.querySelector(s);
     const screenStart=$('#screen-start'), screenQuiz=$('#screen-quiz'), screenResult=$('#screen-result');
@@ -108,15 +103,18 @@
     const qTitle=$('#qTitle'), optWrap=$('#optWrap');
     const participantCountEl=$('#participantCount');
     const scoreEl=$('#score'), totalQEl=$('#totalQ'), penaltyWonEl=$('#penaltyWon'), penaltyHundredEl=$('#penaltyHundred');
-    const gridEl=$('#grid'), detailView=$('#detailView');
+    const gridEl=$('#grid'), detailBox=$('#detailBox');
 
+    // 참가자 수(로컬 저장)
     const LS_KEY_PARTICIPANTS='quiz_participants';
     function getParticipants(){ const n=parseInt(localStorage.getItem(LS_KEY_PARTICIPANTS)||'0',10); return isNaN(n)?0:n; }
     function incParticipants(){ const n=getParticipants()+1; localStorage.setItem(LS_KEY_PARTICIPANTS,String(n)); renderParticipants(); }
     function renderParticipants(){ participantCountEl.textContent=getParticipants().toLocaleString('ko-KR'); }
 
+    // 화면 전환
     function show(el){ [screenStart,screenQuiz,screenResult].forEach(e=>e.classList.add('hide')); el.classList.remove('hide'); }
 
+    // 문제 렌더
     function renderQuestion(){
       const q=QUIZ[state.step];
       qTitle.textContent=q.title;
@@ -130,32 +128,25 @@
       btnBack.classList.toggle('hide', state.step===0);
     }
 
+    // 답 선택
     function selectAnswer(choice){
       state.answers[state.step]={choice};
-      finish();
+      if(state.step<QUIZ.length-1){ state.step++; renderQuestion(); show(screenQuiz);} else { finish(); }
     }
 
+    // 채점 & 결과 렌더
     function finish(){
-      let correct=0; let totalFine=0;
+      let correct=0, totalFine=0;
+      QUIZ.forEach((q,i)=>{ const a=state.answers[i]?.choice; if(a===q.answer) correct++; else totalFine+=q.fine; });
+      scoreEl.textContent=String(correct);
+      totalQEl.textContent=String(QUIZ.length);
+      penaltyWonEl.textContent=totalFine.toLocaleString('ko-KR');
+      penaltyHundredEl.textContent=`응답자의 과태료는 ${(totalFine/1000000)}백만원 이하입니다.`;
+
       gridEl.innerHTML='';
-      QUIZ.forEach((q,i)=>{
-        const userAns=state.answers[i]?.choice;
-        const ok=userAns===q.answer;
-        if(ok) correct++; else totalFine+=q.fine;
-      });
-      scoreEl.textContent = String(correct);
-      totalQEl.textContent = String(QUIZ.length);
-      penaltyWonEl.textContent = totalFine.toLocaleString('ko-KR');
-      penaltyHundredEl.textContent = `응답자의 과태료는 ${(totalFine/1000000)}백만원 이하입니다.`;
-
-      const okFirst = (state.answers[0]?.choice === QUIZ[0].answer);
-      const statuses = [ okFirst ? 'ok' : 'no', null, null, null, null, null, null, null ];
-
       for(let i=0;i<8;i+=2){
-        const row=document.createElement('div');
-        row.className='grid2';
-        row.appendChild(renderCell(i, CATEGORIES[i], statuses[i], i));
-        row.appendChild(renderCell(i+1, CATEGORIES[i+1], statuses[i+1], i+1));
+        const row=document.createElement('div'); row.className='grid2';
+        row.appendChild(renderCell(i)); row.appendChild(renderCell(i+1));
         gridEl.appendChild(row);
       }
 
@@ -163,43 +154,45 @@
       show(screenResult);
     }
 
-    function renderCell(idx, label, status, qIndex){
-      const cell=document.createElement('div');
-      cell.className='cell';
-      const name=document.createElement('div');
-      name.textContent = label || '\u00A0';
-      cell.appendChild(name);
-      if(label){
-        const pill=document.createElement('span');
-        pill.className='pill ' + (status==='ok' ? 'ok' : 'no');
-        pill.innerHTML = (status==='ok') ? '이행 <span class="icon">✅</span>' : '미이행 <span class="icon">❌</span>';
-        cell.appendChild(pill);
-
-        cell.onclick=()=>{
-          const q=QUIZ[0];
-          const userAns=state.answers[0]?.choice;
-          detailView.innerHTML=`<h3>${label}</h3><p><strong>문제:</strong> ${q.title}</p><p><strong>내 답변:</strong> ${userAns}</p><p><strong>정답:</strong> ${q.answer}</p><pre>${q.law}</pre><button class="btn back-btn" onclick="hideDetail()">뒤로가기</button>`;
-          detailView.style.display='block';
-        }
-      }
+    // 결과 셀
+    function renderCell(idx){
+      const label=CATEGORIES[idx]||''; const cell=document.createElement('div'); cell.className='cell';
+      if(!label){ cell.innerHTML='&nbsp;'; return cell; }
+      const q=QUIZ[idx]; const userAns=state.answers[idx]?.choice; const ok= userAns===q.answer;
+      cell.innerHTML=`<div>${label}</div><span class="pill ${ok?'ok':'no'}">${ok?'이행 ✅':'미이행 ❌'}</span>`;
+      cell.onclick=()=>showDetail(idx);
       return cell;
     }
 
-    function hideDetail(){ detailView.style.display='none'; detailView.innerHTML=''; }
-
-    function sharePage(){
-      const url=location.href;
-      if(navigator.share){ navigator.share({title:document.title, url}).catch(()=>{}); }
-      else{ navigator.clipboard.writeText(url).then(()=>alert('페이지 링크가 복사되었습니다.')).catch(()=>{}); }
+    // 상세 카드
+    function showDetail(idx){
+      const q=QUIZ[idx]; if(!q) return;
+      const userAns=state.answers[idx]?.choice || '-';
+      detailBox.innerHTML = `
+        <h3>${CATEGORIES[idx]}</h3>
+        <p><strong>문제:</strong> ${q.title}</p>
+        <p><strong>내 답변:</strong> ${userAns}</p>
+        <p><strong>정답:</strong> ${q.answer}</p>
+        <pre style="white-space:pre-wrap;background:#f3f3f3;padding:10px;border-radius:8px;">${q.law}</pre>
+        <button class="btn" onclick="document.getElementById('detailBox').classList.add('hide')">뒤로가기</button>
+      `;
+      detailBox.classList.remove('hide');
+      detailBox.scrollIntoView({behavior:'smooth'});
     }
 
-    btnStart.onclick=()=>{state.step=0; state.answers=[]; renderQuestion(); show(screenQuiz);}
-    btnRetry.onclick=()=>{state.step=0; state.answers=[]; show(screenStart)}
-    btnShare.onclick=sharePage;
-    btnBack.onclick=()=>{ if(state.step>0){ state.step--; renderQuestion(); show(screenQuiz);} else { show(screenStart);} }
+    // 공유
+    function sharePage(){ const url=location.href; if(navigator.share){ navigator.share({title:document.title,url}).catch(()=>{});} else { navigator.clipboard.writeText(url).then(()=>alert('페이지 링크가 복사되었습니다.')); } }
 
+    // 이벤트
+    btnStart.onclick=()=>{ state.step=0; state.answers=[]; renderQuestion(); show(screenQuiz); };
+    btnRetry.onclick=()=>{ state.step=0; state.answers=[]; show(screenStart); };
+    btnShare.onclick=sharePage;
+    btnBack.onclick=()=>{ if(state.step>0){ state.step--; renderQuestion(); show(screenQuiz);} else { show(screenStart);} };
+
+    // 초기화
     renderParticipants();
   </script>
 </body>
 </html>
+
 
