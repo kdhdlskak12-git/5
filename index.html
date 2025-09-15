@@ -42,8 +42,7 @@
     .pill.no{ background:#fee2e2; color:#7f1d1d }
     .pill .icon{font-weight:900}
 
-    .law-detail{display:none; margin-top:8px; font-size:14px; white-space:pre-line; background:#fff; padding:10px; border-radius:10px;}
-    .cell.open .law-detail{display:block;}
+    .detail-card{display:none; margin-top:18px; padding:20px; background:#fff; border-radius:16px; text-align:left; white-space:pre-line;}
 
     .footer{margin-top:16px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center}
 
@@ -81,6 +80,7 @@
       </div>
       <div class="section-title">항목별 이행 여부</div>
       <div id="grid" class="grid2"></div>
+      <div id="detailView" class="detail-card"></div>
 
       <div class="footer">
         <button id="btnRetry" class="btn">다시하기</button>
@@ -108,7 +108,7 @@
     const qTitle=$('#qTitle'), optWrap=$('#optWrap');
     const participantCountEl=$('#participantCount');
     const scoreEl=$('#score'), totalQEl=$('#totalQ'), penaltyWonEl=$('#penaltyWon'), penaltyHundredEl=$('#penaltyHundred');
-    const gridEl=$('#grid');
+    const gridEl=$('#grid'), detailView=$('#detailView');
 
     const LS_KEY_PARTICIPANTS='quiz_participants';
     function getParticipants(){ const n=parseInt(localStorage.getItem(LS_KEY_PARTICIPANTS)||'0',10); return isNaN(n)?0:n; }
@@ -176,13 +176,16 @@
         cell.appendChild(pill);
 
         cell.onclick=()=>{
-          const q=QUIZ[0]; // 현재는 첫 문제만 연결
+          const q=QUIZ[0];
           const userAns=state.answers[0]?.choice;
-          alert(`문제: ${q.title}\n내 답변: ${userAns}\n정답: ${q.answer}\n\n법령:\n${q.law}`);
+          detailView.innerHTML=`<h3>${label}</h3><p><strong>문제:</strong> ${q.title}</p><p><strong>내 답변:</strong> ${userAns}</p><p><strong>정답:</strong> ${q.answer}</p><pre>${q.law}</pre><button class="btn back-btn" onclick="hideDetail()">뒤로가기</button>`;
+          detailView.style.display='block';
         }
       }
       return cell;
     }
+
+    function hideDetail(){ detailView.style.display='none'; detailView.innerHTML=''; }
 
     function sharePage(){
       const url=location.href;
