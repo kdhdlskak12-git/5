@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>기계식주차장 과태료 진단 셀프 테스트</title>
+  <style>
+    :root{
+      --bg:#29c3cd;
+      --bg-dark:#1fb4be;
+      --ink:#000000;
+      --card:#a7f3d0;
+      --btn:#0e7c86;
+      --btn-hover:#0c6a72;
+      --ok:#17a34a;
+      --no:#ef4444;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: "Pretendard", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+      background:var(--bg); color:var(--ink); display:flex; align-items:center; justify-content:center; height:100vh;
+    }
+    .app{width:min(960px, 100%); padding:24px}
+    .hero{background:linear-gradient(180deg, var(--bg) 0%, var(--bg-dark) 100%); border-radius:24px; padding:28px; color:var(--ink); box-shadow:0 10px 20px rgba(0,0,0,.08)}
+    .hero h1{margin:0 0 8px; font-size:32px; color:var(--ink)}
+    .hero p{margin:6px 0 0; opacity:.95; color:var(--ink)}
+    .card{background:var(--card); border-radius:20px; padding:20px; margin-top:18px; box-shadow:0 10px 16px rgba(0,0,0,.06)}
+    .btn{appearance:none; border:none; background:var(--btn); color:#fff; font-weight:800; padding:16px 22px; border-radius:18px; cursor:pointer; font-size:18px; box-shadow:0 8px 14px rgba(0,0,0,.15)}
+    .btn:hover{background:var(--btn-hover)}
+    .opt{display:block; width:100%; text-align:center; padding:14px; margin:10px 0; border-radius:16px; background:#b6eef2; color:var(--ink); font-weight:800; cursor:pointer; font-size:20px}
+    .result h2{margin:0 0 10px; color:var(--ink)}
+    .law{background:#fff; padding:12px; border-radius:12px; margin-top:10px; font-size:14px; white-space:pre-line}
+    .hide{display:none}
+    .center{text-align:center}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- 시작 화면 -->
+    <section id="screen-start" class="hero">
+      <h1>기계식주차장 과태료 진단 셀프 테스트</h1>
+      <p>OX 퀴즈 형식, 문항당 과태료는 상황별 금액으로 책정됩니다.</p>
+      <button id="btnStart" class="btn">테스트 시작하기</button>
+    </section>
+
+    <!-- 문제 화면 -->
+    <section id="screen-quiz" class="card hide">
+      <h2 id="qTitle"></h2>
+      <div id="optWrap"></div>
+      <div id="lawText" class="law hide"></div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="screen-result" class="card hide center">
+      <h2>결과</h2>
+      <p id="summary"></p>
+      <button id="btnRetry" class="btn">다시하기</button>
+    </section>
+  </div>
+
+  <script>
+    const QUIZ = [
+      {
+        title: '20대 이상의 기계식주차장치를 운영하는 기계식주차장관리자 등은 배상보험에 가입하지 않아도 된다?',
+        answer: 'X',
+        fine: 5000000,
+        law: `제19조의16제1항 또는 제2항을 위반하여 배상보험에 가입하지 아니한 자\n제19조의16(보험 가입) \n① 제19조의14제1항에 따라 보수업의 등록을 한 자(이하 “보수업자”라 한다)는 그 업무를 수행하면서 고의 또는 과실로 타인에게 손해를 입힐 경우 그 손해에 대한 배상을 보장하기 위하여 보험에 가입하여야 한다.`
+      }
+    ];
+
+    const state = { step:0, answers:[] };
+
+    const $ = s=>document.querySelector(s);
+    const screenStart=$('#screen-start'), screenQuiz=$('#screen-quiz'), screenResult=$('#screen-result');
+    const btnStart=$('#btnStart'), btnRetry=$('#btnRetry');
+    const qTitle=$('#qTitle'), optWrap=$('#optWrap'), lawText=$('#lawText'), summary=$('#summary');
+
+    function show(el){ [screenStart,screenQuiz,screenResult].forEach(e=>e.classList.add('hide')); el.classList.remove('hide'); }
+
+    function renderQuestion(){
+      const q=QUIZ[state.step];
+      qTitle.textContent=q.title;
+      optWrap.innerHTML='';
+      ['O','X'].forEach(choice=>{
+        const btn=document.createElement('button');
+        btn.className='opt'; btn.textContent=choice;
+        btn.onclick=()=>selectAnswer(choice);
+        optWrap.appendChild(btn);
+      });
+      lawText.classList.add('hide');
+      lawText.textContent='';
+    }
+
+    function selectAnswer(choice){
+      state.answers[state.step]={choice};
+      const q=QUIZ[state.step];
+      lawText.textContent=q.law;
+      lawText.classList.remove('hide');
+      setTimeout(()=>finish(),2000);
+    }
+
+    function finish(){
+      let correct=0; let totalFine=0;
+      QUIZ.forEach((q,i)=>{
+        const userAns=state.answers[i].choice;
+        const ok=userAns===q.answer;
+        if(ok) correct++; else totalFine+=q.fine;
+      });
+      summary.textContent=`정답 ${correct}/${QUIZ.length}, 응답자의 과태료는 ${(totalFine/1000000)}백만원 이하입니다.`;
+      show(screenResult);
+    }
+
+    btnStart.onclick=()=>{state.step=0; state.answers=[]; renderQuestion(); show(screenQuiz);}
+    btnRetry.onclick=()=>{state.step=0; state.answers=[]; show(screenStart)}
+  </script>
+</body>
+</html>
