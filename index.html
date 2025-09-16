@@ -168,8 +168,6 @@
     // 답 선택
     function selectAnswer(choice){
       state.answers[state.step]={choice};
-     
-
       if(state.step<QUIZ.length-1){ state.step++; renderQuestion(); show(screenQuiz);} else { finish(); }
     }
 
