@@ -178,7 +178,7 @@
       scoreEl.textContent=String(correct);
       totalQEl.textContent=String(QUIZ.length);
       penaltyWonEl.textContent=totalFine.toLocaleString('ko-KR');
-      penaltyHundredEl.textContent=`응답자의 과태료는 ${(totalFine)}백만원 이하입니다.`;
+      penaltyHundredEl.textContent=`응답자의 과태료는 ${(totalFine/1000000)}백만원 이하입니다.`;
 
       gridEl.innerHTML='';
       for(let i=0;i<8;i+=2){
