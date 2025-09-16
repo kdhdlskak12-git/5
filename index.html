@@ -16,20 +16,7 @@
     .hero p{margin:6px 0 0;opacity:.95}
     .logo{max-width:360px;margin:0 auto 12px;display:block}
     .stat{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.3);font-weight:700}
- /* 상단 TS 로고 배너 */
-  .ts-banner{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    padding-top:18px;
-    margin-bottom:8px;
-  }
-  .ts-banner img{
-    max-width:420px;   /* 필요 시 크기 조절 */
-    width:100%;
-    height:auto;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,.12));
-  }
+
     .card{background:var(--card);border-radius:20px;padding:20px;margin-top:18px;box-shadow:0 10px 16px rgba(0,0,0,.06)}
     .btn{appearance:none;border:none;background:var(--btn);color:#fff;font-weight:800;padding:12px 18px;border-radius:18px;cursor:pointer;font-size:16px;box-shadow:0 8px 14px rgba(0,0,0,.15)}
     .btn:hover{background:var(--btn-hover)}
@@ -55,19 +42,33 @@
 </head>
 <body>
   <div class="app">
-   <!-- 인트로 -->
+  <!-- 인트로 -->
 <section id="screen-start" class="hero">
-  <!-- 기존 로고 삭제하고 아래로 교체 -->
-   <img
-    src="assets/images/ts_logo.png"
-    alt="TS 한국교통안전공단"
-    onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Korea_Transportation_Safety_Authority_Logo.png/512px-Korea_Transportation_Safety_Authority_Logo.png';"
-  />
+  <!-- TS 로고 SVG 삽입 -->
+  <div style="display:flex;justify-content:center;align-items:center;margin-bottom:16px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="220" height="100" viewBox="0 0 1005 458">
+      <!-- T -->
+      <linearGradient id="gradT" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#F28C00;stop-opacity:1" />
+      </linearGradient>
+      <rect x="0" y="0" width="420" height="100" fill="url(#gradT)" />
+      <rect x="160" y="0" width="100" height="458" fill="url(#gradT)" rx="20" />
+      <!-- S -->
+      <linearGradient id="gradS" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#29ABE2;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#0071BC;stop-opacity:1" />
+      </linearGradient>
+      <path d="M600,50 C750,-30 950,20 950,150 C950,250 700,250 700,350 C700,420 900,420 1000,360" 
+            stroke="url(#gradS)" stroke-width="90" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+
   <h1>기계식주차장 과태료 진단 셀프 테스트</h1>
-  <div class="stat">지금까지 참가자: <span id="participantCount">0</span> 명</div>
-  <p>나는 기계식주차장 안전 관리에 대해 얼마나 알고 있을까? 모르면 모를수록 커지는 과태료</p>
-  <button id="btnStart" class="btn">테스트 시작하기</button>
-</section>
+      <div class="stat">지금까지 참가자: <span id="participantCount">0</span> 명</div>
+      <p>나는 기계식주차장 안전 관리에 대해 얼마나 알고 있을까? 모르면 모를수록 커지는 과태료</p>
+      <button id="btnStart" class="btn">테스트 시작하기</button>
+    </section>
 
     <!-- 퀴즈 -->
     <section id="screen-quiz" class="card hide">
@@ -250,4 +251,3 @@
   </script>
 </body>
 </html
-
