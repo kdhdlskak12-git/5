@@ -57,7 +57,7 @@
     .hide{display:none}
     .back-btn{margin-top:12px;display:block;width:100%}
     .answer-box {
-  background: #f0f8ff;   /* 연한 파란색 배경 */
+  background: #FCFCFC;   /* 연한 파란색 배경 */
   padding: 8px 12px;
   border-radius: 8px;
   margin: 6px 0;
@@ -233,7 +233,7 @@
     function showDetail(idx){
       const q=QUIZ[idx]; if(!q) return;
       const userAns=state.answers[idx]?.choice || '-';
-      detailBox.innerHTML =  <p class="answer-box">`
+      detailBox.innerHTML =  `
         <h3>${CATEGORIES[idx]}</h3>
         <p class="answer-box">문제:</strong> ${q.title}</p>
         <p class="answer-box">내 답변:</strong> ${userAns}</p>
