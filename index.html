@@ -233,9 +233,9 @@
     function showDetail(idx){
       const q=QUIZ[idx]; if(!q) return;
       const userAns=state.answers[idx]?.choice || '-';
-      detailBox.innerHTML = `
+      detailBox.innerHTML = `<p class="answer-box">
         <h3>${CATEGORIES[idx]}</h3>
-        <p><strong>문제:</strong> ${q.title}</p>
+        <p class="answer-box">문제:</strong> ${q.title}</p>
         <p class="answer-box">내 답변:</strong> ${userAns}</p>
         <p class="answer-box">정답:</strong> ${q.answer}</p>
         <p class="answer-box">과태료:</strong> ${(q.fine/10000)}만원 이하</p>
