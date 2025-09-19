@@ -26,18 +26,18 @@
     .stat{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.3);font-weight:700}
 
     /* 기존 .card 스타일 삭제하고 아래로 교체 */
-.card {
-  background: var(--card);
-  border-radius: 20px;
-  padding: 20px;
-  margin-top: 0;                /* 🔹 위 여백 없앰 */
-  box-shadow: 0 10px 16px rgba(0,0,0,.06);
-  width: 100%;                  /* 🔹 화면 전체 차지 */
-  min-height: 100vh;            /* 🔹 화면 높이 꽉 채움 */
-  display: flex; 
-  flex-direction: column;
-  justify-content: center;      /* 🔹 세로 가운데 정렬 */
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:20px;
+  margin-top:18px;
+  box-shadow:0 10px 16px rgba(0,0,0,.06);
+  width:95%;             /* ✅ 모바일 화면 거의 꽉 차게 */
+  max-width:700px;       /* ✅ PC에서는 700px까지만 */
+  margin-left:auto;      /* ✅ 가운데 정렬 */
+  margin-right:auto;
 }
+
     .btn{appearance:none;border:none;background:var(--btn);color:#fff;font-weight:800;padding:12px 18px;border-radius:18px;cursor:pointer;font-size:16px;box-shadow:0 8px 14px rgba(0,0,0,.15)}
     .btn:hover{background:var(--btn-hover)}
     .opt{display:block;width:100%;text-align:center;padding:14px;margin:10px 0;border-radius:16px;background:#b6eef2;color:var(--ink);font-weight:800;cursor:pointer;font-size:20px}
