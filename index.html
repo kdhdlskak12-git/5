@@ -56,6 +56,12 @@
     .footer{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
     .hide{display:none}
     .back-btn{margin-top:12px;display:block;width:100%}
+    .answer-box {
+  background: #f0f8ff;   /* 연한 파란색 배경 */
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
 }
    
   </style>
@@ -230,9 +236,9 @@
       detailBox.innerHTML = `
         <h3>${CATEGORIES[idx]}</h3>
         <p><strong>문제:</strong> ${q.title}</p>
-        <p><strong>내 답변:</strong> ${userAns}</p>
-        <p><strong>정답:</strong> ${q.answer}</p>
-        <p><strong>과태료:</strong> ${(q.fine/10000)}만원 이하</p>
+        <p class="answer-box">내 답변:</strong> ${userAns}</p>
+        <p class="answer-box">정답:</strong> ${q.answer}</p>
+        <p class="answer-box">과태료:</strong> ${(q.fine/10000)}만원 이하</p>
         <pre style="white-space:pre-wrap;background:#f3f3f3;padding:10px;border-radius:8px;">${q.law}</pre>
         <button class="btn" onclick="document.getElementById('detailBox').classList.add('hide')">뒤로가기</button>
       `;
