@@ -10,67 +10,33 @@
       --bg:#e3f2fd; --bg-dark:#fff; --ink:#000; --card:#e3f2fd; --btn:#F4FFEF; --btn-hover:#EADEFF;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:"Pretendard",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;
-      background:var(--bg);
-      color:var(--ink);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:100vh;
-    }
-
-    /* ✅ 전체 비율 고정 컨테이너 */
-    .scale-container {
-      transform-origin: top center;
-      transform: scale(1);
-      width: 900px; /* PC에서 기준 크기 */
-      margin: 0 auto;
-    }
-    @media (max-width: 900px) { .scale-container { transform: scale(0.85); } }
-    @media (max-width: 700px) { .scale-container { transform: scale(0.7); } }
-    @media (max-width: 500px) {
-      .scale-container {
-        transform: none;   /* ✅ 모바일에서는 scale 대신 width 100% */
-        width: 100%;
-      }
-    }
+    body{margin:0;font-family:"Pretendard",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;background:var(--bg);color:var(--ink);display:flex;align-items:center;justify-content:center;min-height:100vh}
+   
+     /* ✅ 전체 비율 고정 컨테이너 */
+    .scale-container {transform-origin: top center;transform: scale(1);width: 900px;/* PC에서 기준 크기 */ margin: 0 auto;}
+    @media (max-width: 900px) {.scale-container { transform: scale(0.85); }}
+    @media (max-width: 700px) {.scale-container { transform: scale(0.7); }}
+    @media (max-width: 500px) {.scale-container { transform: scale(0.55); }}
     
     .app{width:min(960px,100%);padding:24px}
-    .hero{
-      background:linear-gradient(180deg,var(--bg),var(--bg-dark));
-      border-radius:24px;
-      padding:28px;
-      color:var(--ink);
-      box-shadow:0 10px 20px rgba(0,0,0,.08);
-      text-align:center
-    }
+    .hero{background:linear-gradient(180deg,var(--bg),var(--bg-dark));border-radius:24px;padding:28px;color:var(--ink);box-shadow:0 10px 20px rgba(0,0,0,.08);text-align:center}
     .hero h1{margin:12px 0 8px;font-size:32px}
     .hero p{margin:6px 0 0;opacity:.95}
-    
-    /* ✅ 로고 수정 */
-    .logo{
-      max-width:100%;   /* 부모 너비에 맞춤 */
-      height:auto;      /* 비율 유지 */
-      margin:0 auto 12px;
-      display:block;
-      object-fit:contain;
-    }
-
+    .logo{max-width:360px;margin:0 auto 12px;display:block}
     .stat{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.3);font-weight:700}
 
-    .card{
-      background:linear-gradient(180deg,var(--card),var(--bg-dark));
-      border-radius:20px;
-      padding:20px;
-      margin-top:18px;
-      box-shadow:0 10px 16px rgba(0,0,0,.06);
-      width:100%;
-      max-width:734px;
-      margin-left:auto;
-      margin-right:auto;
-    }
+    /* 기존 .card 스타일 삭제하고 아래로 교체 */
+.card{
+  background:linear-gradient(180deg,var(--card),var(--bg-dark));
+  border-radius:20px;
+  padding:20px;
+  margin-top:18px;
+  box-shadow:0 10px 16px rgba(0,0,0,.06);
+  width:100%;             /* ✅ 모바일 화면 거의 꽉 차게 */
+  max-width:734px;       /* ✅ PC에서는 700px까지만 */
+  margin-left:auto;      /* ✅ 가운데 정렬 */
+  margin-right:auto;
+}
 
     .btn{appearance:none;border:none;background:var(--btn);color:#000;font-weight:800;padding:12px 18px;border-radius:18px;cursor:pointer;font-size:16px;box-shadow:0 8px 14px rgba(0,0,0,.15)}
     .btn:hover{background:var(--btn-hover)}
@@ -91,11 +57,13 @@
     .hide{display:none}
     .back-btn{margin-top:12px;display:block;width:100%}
     .answer-box {
-      background: #F7F7F7;
-      padding: 8px 12px;
-      border-radius: 8px;
-      margin: 6px 0;
-    }
+  background: #F7F7F7;   /* 연한 파란색 배경 */
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+}
+   
   </style>
 </head>
 <body>
@@ -103,25 +71,23 @@
   <div class="app">
     <!-- 인트로 -->
     <section id="screen-start" class="hero">
-      <!-- ✅ width/height 제거, class="logo" 추가 -->
-      <img class="logo" alt="TS 한국교통안전공단" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />
+     /*<img width="706" height="111" alt="image" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />*/
       <h1>기계식주차장 과태료 진단 셀프 테스트</h1>
       <div class="stat">지금까지 참가자: <span id="participantCount">0</span> 명</div>
-      <p>나는 기계식주차장 안전 관리에 대해 얼마나 알고 있을까? 모르면 모를수록 커지는 과태료</p>
+      <p><p>나는 기계식주차장 안전 관리에 대해 얼마나 알고 있을까? 모르면 모를수록 커지는 과태료</p></p>
       <button id="btnStart" class="btn">테스트 시작하기</button>
     </section>
 
     <!-- 퀴즈 -->
     <section id="screen-quiz" class="card hide">
-      <img class="logo" alt="TS 한국교통안전공단" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />
-      <h2 id="qTitle"></h2>
+  /*<img width="706" height="111" alt="image" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />*/      <h2 id="qTitle"></h2>
       <div id="optWrap"></div>
       <button id="btnBack" class="btn back-btn hide">뒤로가기</button>
     </section>
 
     <!-- 결과 -->
     <section id="screen-result" class="card hide">
-      <img class="logo" alt="TS 한국교통안전공단" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />
+      <img width="706" height="111" alt="image" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />
       <div class="result-head">
         <h2>내 안전이해도</h2>
         <div class="muted">정답 <b id="score"></b> / <span id="totalQ"></span> · 예상 과태료 <b id="penaltyWon"></b>원</div>
@@ -138,10 +104,62 @@
   </div>
 
   <script>
-    // ----- 데이터: 문제 8개 (내용은 생략) -----
-    const QUIZ = [/* ... */];
+    // ----- 데이터: 문제 8개 -----
+    const QUIZ = [
+      {
+        title: '1. 20대 이상의 기계식주차장치를 운영하는 기계식주차장관리자 등은 배상보험에 가입하지 않아도 된다?',
+        answer: 'X',
+        fine: 5000000,
+        law: ``
+      },
+      {
+        title: '2.',
+        answer: 'X',
+        fine: 1000000,
+        law: ``
+      },
+      {
+        title: '3. ',
+        answer: 'X',
+        fine: 1000000,
+        law: ``
+      },
+      {
+        title: '4.',
+        answer: 'O',
+        fine: 500000,
+        law: ``
+      },
+      {
+        title: '5.',
+        answer: 'X',
+        fine: 500000,
+        law: ``
+      },
+      {
+        title: '6.',
+        answer: 'X',
+        fine: 5000000,
+        law: ``
+      },
+      {
+        title: '7.',
+        answer: 'O',
+        fine: 5000000,
+        law: ``
+      },
+      {
+        title: '8.',
+        answer: 'X',
+        fine: 500000,
+        law: ``
+      }
+    ];
+
+    // 결과표 라벨(8칸)
     const CATEGORIES = ['1. 보상책임 여부','2. 검사 이행 여부','3. 자체점검 여부','4. 표지 부착 여부','5. 안내문 부착 여부','6. 사고 통보 여부','7. 사고 현장 보존 여부','8. 관리인 선임 통보 여부'];
 
+    // ----- 상태 & 셀렉터 -----
     const state = { step:0, answers:[] };
     const $ = s=>document.querySelector(s);
     const screenStart=$('#screen-start'), screenQuiz=$('#screen-quiz'), screenResult=$('#screen-result');
@@ -151,8 +169,16 @@
     const scoreEl=$('#score'), totalQEl=$('#totalQ'), penaltyWonEl=$('#penaltyWon'), penaltyHundredEl=$('#penaltyHundred');
     const gridEl=$('#grid'), detailBox=$('#detailBox');
 
+    // 참가자 수(로컬 저장)
+    const LS_KEY_PARTICIPANTS='quiz_participants';
+    function getParticipants(){ const n=parseInt(localStorage.getItem(LS_KEY_PARTICIPANTS)||'0',10); return isNaN(n)?0:n; }
+    function incParticipants(){ const n=getParticipants()+1; localStorage.setItem(LS_KEY_PARTICIPANTS,String(n)); renderParticipants(); }
+    function renderParticipants(){ participantCountEl.textContent=getParticipants().toLocaleString('ko-KR'); }
+
+    // 화면 전환
     function show(el){ [screenStart,screenQuiz,screenResult].forEach(e=>e.classList.add('hide')); el.classList.remove('hide'); }
 
+    // 문제 렌더
     function renderQuestion(){
       const q=QUIZ[state.step];
       qTitle.textContent=q.title;
@@ -167,11 +193,13 @@
       btnBack.classList.toggle('hide', state.step===0);
     }
 
+    // 답 선택
     function selectAnswer(choice){
       state.answers[state.step]={choice};
       if(state.step<QUIZ.length-1){ state.step++; renderQuestion(); show(screenQuiz);} else { finish(); }
     }
 
+    // 채점 & 결과 렌더
     function finish(){
       let correct=0, totalFine=0;
       QUIZ.forEach((q,i)=>{ const a=state.answers[i]?.choice; if(a===q.answer) correct++; else totalFine+=q.fine; });
@@ -187,19 +215,48 @@
         gridEl.appendChild(row);
       }
 
+      incParticipants();
       show(screenResult);
     }
 
+    // 결과 셀
     function renderCell(idx){
       const label=CATEGORIES[idx]||''; const cell=document.createElement('div'); cell.className='cell';
       if(!label){ cell.innerHTML='&nbsp;'; return cell; }
       const q=QUIZ[idx]; const userAns=state.answers[idx]?.choice; const ok= userAns===q.answer;
       cell.innerHTML=`<div>${label}</div><span class="pill ${ok?'ok':'no'}">${ok?'숙지 ✅':'미숙지 ❌'} (${(q.fine/10000)}만원 이하)</span>`;
+      cell.onclick=()=>showDetail(idx);
       return cell;
     }
 
+    // 상세 카드
+    function showDetail(idx){
+      const q=QUIZ[idx]; if(!q) return;
+      const userAns=state.answers[idx]?.choice || '-';
+      detailBox.innerHTML =  `
+        <h3>${CATEGORIES[idx]}</h3>
+        <p class="answer-box">문제:</strong> ${q.title}</p>
+        <p class="answer-box">내 답변:</strong> ${userAns}</p>
+        <p class="answer-box">정답:</strong> ${q.answer}</p>
+        <p class="answer-box">과태료:</strong> ${(q.fine/10000)}만원 이하</p>
+        <pre style="white-space:pre-wrap;background:#f3f3f3;padding:10px;border-radius:8px;">${q.law}</pre>
+        <button class="btn" onclick="document.getElementById('detailBox').classList.add('hide')">뒤로가기</button>
+      `;
+      detailBox.classList.remove('hide');
+      detailBox.scrollIntoView({behavior:'smooth'});
+    }
+
+    // 공유
+    function sharePage(){ const url=location.href; if(navigator.share){ navigator.share({title:document.title,url}).catch(()=>{});} else { navigator.clipboard.writeText(url).then(()=>alert('페이지 링크가 복사되었습니다.')); } }
+
+    // 이벤트
     btnStart.onclick=()=>{ state.step=0; state.answers=[]; renderQuestion(); show(screenQuiz); };
     btnRetry.onclick=()=>{ state.step=0; state.answers=[]; show(screenStart); };
+    btnShare.onclick=sharePage;
+    btnBack.onclick=()=>{ if(state.step>0){ state.step--; renderQuestion(); show(screenQuiz);} else { show(screenStart);} };
+
+    // 초기화
+    renderParticipants();
   </script>
 </body>
 </html>
