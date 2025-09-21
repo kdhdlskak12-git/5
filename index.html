@@ -67,7 +67,7 @@
     .result-head h2{margin:0 0 8px}
     .section-title{font-weight:800;margin:12px 0 10px}
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;row-gap:30px;}      /* ✅ 위아래 간격 */
-    .cell{background:#EDEFFF;border-radius:16px;padding:12px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:64px;cursor:pointer;text-align:center}
+    .cell{background:#EDEFFF;border-radius:16px;padding:12px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:64px;cursor:pointer;text-align:center; margin:6px;}
     .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 7px;border-radius:16px;font-weight:800;margin-top:6px}
     .pill.ok{background:#dcfce7;color:#14532d}
     .pill.no{background:#fee2e2;color:#7f1d1d}
@@ -118,9 +118,9 @@
     <section id="screen-result" class="card hide">
    <img class="logo-img" alt="image" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />
       <div class="result-head"><br>
-        <h2>내 안전이해도</h2><br>
-        <h2><div class="muted">정답 <b id="score"></b> / <span id="totalQ"></span> <br>
-         ●응답자의 예상 과태료는<br> <span class="highlight-red"><span id="penaltyWon"></span>원</span> 이하입니다.</div><h2>
+        <h2>내 안전이해도</h2>
+        <h2><div class="muted">●정답 <b id="score"></b> / <span id="totalQ"></span> <br><br>
+         응답자의 예상 과태료는<br> <span class="highlight-red"><span id="penaltyWon"></span>원</span> 이하입니다.</div><h2>
         <div class="muted" id="penaltyHundred"></div>
       </div>
       <div class="section-title">항목별 이행 여부</div>
