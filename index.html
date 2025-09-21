@@ -246,7 +246,7 @@
       const label=CATEGORIES[idx]||''; const cell=document.createElement('div'); cell.className='cell';
       if(!label){ cell.innerHTML='&nbsp;'; return cell; }
       const q=QUIZ[idx]; const userAns=state.answers[idx]?.choice; const ok= userAns===q.answer;
-      cell.innerHTML=`<div>${label}</div><span class="pill ${ok?'ok':'no'}">${ok?'숙지 ✅':'미숙지 ❌'} (${(q.fine/10000)}만원 이하)</span>`;
+      cell.innerHTML=`<div>${label}</div><span class="pill ${ok?'ok':'no'}">${ok?'숙지 ✅':'미숙지 ❌'}<h1> (${(q.fine/10000)}만원 이하)</span>`;
       cell.onclick=()=>showDetail(idx);
       return cell;
     }
