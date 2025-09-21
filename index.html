@@ -229,25 +229,7 @@
       if(state.step<QUIZ.length-1){ state.step++; renderQuestion(); show(screenQuiz);} else { finish(); }
     }
 
-    // 채점 & 결과 렌더
-    function finish(){
-      let correct=0, totalFine=0;
-      QUIZ.forEach((q,i)=>{ const a=state.answers[i]?.choice; if(a===q.answer) correct++; else totalFine+=q.fine; });
-      scoreEl.textContent=String(correct);
-      totalQEl.textContent=String(QUIZ.length);
-      penaltyWonEl.textContent=totalFine.toLocaleString('ko-KR');
-      penaltyHundredEl.textContent=`응답자의 과태료는 ${(totalFine/1000000)}백만원 이하입니다.`;
-
-      gridEl.innerHTML='';
-      for(let i=0;i<8;i+=2){
-        const row=document.createElement('div'); row.className='grid2';
-        row.appendChild(renderCell(i)); row.appendChild(renderCell(i+1));
-        gridEl.appendChild(row);
-      }
-
-      incParticipants();
-      show(screenResult);
-    }
+   
 
     // 결과 셀
     function renderCell(idx){
