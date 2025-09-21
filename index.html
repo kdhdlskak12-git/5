@@ -15,7 +15,31 @@
    
      /* ✅ 전체 비율 고정 컨테이너 */
     .scale-container {transform-origin: top center;transform: scale(1);width: 900px;/* PC에서 기준 크기 */ margin: 0 auto;}
-    @media (max-width: 900px) {.scale-container { transform: scale(1); }}
+    
+    /* PC 기본 */
+.logo-img {
+  max-width: 700px;  /* PC 최대 크기 */
+  width: 100%;       /* 화면에 맞춰 줄어듦 */
+  height: auto;      /* 세로 비율 유지 */
+  display: block;
+  margin: 0 auto;
+}
+
+/* 태블릿 (900px 이하) */
+@media (max-width: 900px) {
+  .logo-img {
+    max-width: 500px;
+  }
+}
+
+/* 작은 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .logo-img {
+    max-width: 300px;
+  }
+}
+    /*@media (max-width: 900px) {.scale-container { transform: scale(1); }}/*즉, 화면 너비가 **900px 이하 (태블릿·핸드폰 정도 크기)**로 줄어들면,.scale-container가 100% 크기로 줄어들어요.*/
+
   
     
     .app{width:min(960px,100%);padding:24px}
@@ -71,7 +95,7 @@
   <div class="app">
     <!-- 인트로 -->
     <section id="screen-start" class="hero">
-    
+     <img class="logo-img" alt="image" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />
       <h1>기계식주차장 과태료 진단 셀프 테스트</h1>
       <div class="stat">지금까지 참가자: <span id="participantCount">0</span> 명</div>
       <p><p>나는 기계식주차장 안전 관리에 대해 얼마나 알고 있을까? 모르면 모를수록 커지는 과태료</p></p>
@@ -80,7 +104,7 @@
 
     <!-- 퀴즈 -->
     <section id="screen-quiz" class="card hide">
-   
+    <img width="706" height="111" alt="image" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />
       <h2 id="qTitle"></h2>
       <div id="optWrap"></div>
       <button id="btnBack" class="btn back-btn hide">뒤로가기</button>
@@ -88,7 +112,7 @@
 
     <!-- 결과 -->
     <section id="screen-result" class="card hide">
-  
+   <img width="706" height="111" alt="image" src="https://github.com/user-attachments/assets/4fd5e7e4-a0c1-43b3-bf7b-84ebc2bcd032" />
       <div class="result-head">
         <h2>내 안전이해도</h2>
         <div class="muted">정답 <b id="score"></b> / <span id="totalQ"></span> · 예상 과태료 <b id="penaltyWon"></b>원</div>
