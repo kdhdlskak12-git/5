@@ -76,7 +76,10 @@
     .footer{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
     .hide{display:none}
     .back-btn{margin-top:12px;display:block;width:100%}
-
+.small-break {
+  display: block;       /* 줄바꿈 */
+  margin-top: 4px;      /* ✅ 원하는 만큼 줄 간격 */
+}
     .answer-box {
   background: #F7F7F7;   /* 연한 파란색 배경 */
   padding: 8px 12px;
@@ -246,7 +249,7 @@
       const label=CATEGORIES[idx]||''; const cell=document.createElement('div'); cell.className='cell';
       if(!label){ cell.innerHTML='&nbsp;'; return cell; }
       const q=QUIZ[idx]; const userAns=state.answers[idx]?.choice; const ok= userAns===q.answer;
-      cell.innerHTML=`<div>${label}</div><span class="pill ${ok?'ok':'no'}">${ok?'숙지 ✅':'미숙지 ❌'}<h1> (${(q.fine/10000)}만원 이하)</span>`;
+      cell.innerHTML=`<div>${label}</div><span class="pill ${ok?'ok':'no'}">${ok?'숙지 ✅':'미숙지 ❌'}<span class="small-break"></span> (${(q.fine/10000)}만원 이하)</span>`;
       cell.onclick=()=>showDetail(idx);
       return cell;
     }
