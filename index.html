@@ -71,7 +71,7 @@
     .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 7px;border-radius:16px;font-weight:800;margin-top:6px}
     .pill.ok{background:#dcfce7;color:#14532d}
     .pill.no{background:#fee2e2;color:#7f1d1d}
-    .detail-card{margin-top:16px;  margin-bottom: 20px; /* 아래쪽에 여백 추가 */background:#fff;border-radius:16px;padding:16px;box-shadow:0 6px 12px rgba(0,0,0,.1)}
+    .detail-card{margin-top:16px;background:#fff;border-radius:16px;padding:16px;box-shadow:0 6px 12px rgba(0,0,0,.1)}
     .detail-card h3{margin:0 0 8px}
     .footer{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
     .hide{display:none}
@@ -270,7 +270,7 @@
         <p class="answer-box">내 답변:</strong> ${userAns}</p>
         <p class="answer-box">정답:</strong> ${q.answer}</p>
         <p class="answer-box">과태료:</strong> ${(q.fine/10000)}만원 이하</p>
-        <div style="white-space:pre-wrap;background:#f3f3f3;padding:10px;border-radius:8px;">${q.law}</div>
+        <div style="white-space:pre-wrap;background:#f3f3f3;padding:10px;border-radius:8px;">${q.law}</div><br>
         <button class="btn" onclick="document.getElementById('detailBox').classList.add('hide')">뒤로가기</button>
       `;
       detailBox.classList.remove('hide');
