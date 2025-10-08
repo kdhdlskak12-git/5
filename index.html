@@ -201,10 +201,10 @@
     const gridEl=$('#grid'), detailBox=$('#detailBox');
 
     // 참가자 수(로컬 저장)
-    const LS_KEY_PARTICIPANTS='quiz_participants';
-    function getParticipants(){ const n=parseInt(localStorage.getItem(LS_KEY_PARTICIPANTS)||'0',10); return isNaN(n)?0:n; }
-    function incParticipants(){ const n=getParticipants()+1; localStorage.setItem(LS_KEY_PARTICIPANTS,String(n)); renderParticipants(); }
-    function renderParticipants(){ participantCountEl.textContent=getParticipants().toLocaleString('ko-KR'); }
+    //const LS_KEY_PARTICIPANTS='quiz_participants';
+    //function getParticipants(){ const n=parseInt(localStorage.getItem(LS_KEY_PARTICIPANTS)||'0',10); return isNaN(n)?0:n; }
+    //function incParticipants(){ const n=getParticipants()+1; localStorage.setItem(LS_KEY_PARTICIPANTS,String(n)); renderParticipants(); }
+    //function renderParticipants(){ participantCountEl.textContent=getParticipants().toLocaleString('ko-KR'); }
 
     // 화면 전환
     function show(el){ [screenStart,screenQuiz,screenResult].forEach(e=>e.classList.add('hide')); el.classList.remove('hide'); }
@@ -246,7 +246,7 @@
         gridEl.appendChild(row);
       }
 
-      incParticipants();
+      //incParticipants();
       show(screenResult);
     }
 
@@ -287,7 +287,7 @@
     btnBack.onclick=()=>{ if(state.step>0){ state.step--; renderQuestion(); show(screenQuiz);} else { show(screenStart);} };
 
     // 초기화
-    renderParticipants();
+    //renderParticipants();
   </script>
 </body>
 </html>
